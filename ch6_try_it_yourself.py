@@ -170,13 +170,17 @@ for person in names_numbers.items():
 # something like country, population, and fact. Print the name of each city and
 # all of the infor- mation you have stored about it.
 print('\n---\n6-11\n---\n')
+cities = {'barcelona':{'country': 'spain', 'population': '1.7 million', 'fact':
+                    'the city center is called the gothic quarter'},
+        'orlando':{'country': 'usa', 'population': '307,573', 'fact':
+                    'the city has  more than 100 lakes'},\
+        'los angeles': {'country': 'usa' , 'population': '3.9 million',
+                    'fact':'the city once had the world\'s largest electrified rail system'}}
 
-barcelona = {'country': 'spain', 'population': '1.7 million', 'fact':\
-            'the city center is called the gothic quarter'}
-orlando = {'country': 'usa', 'population': '307,573', 'fact':\
-        'the city has  more than 100 lakes'}
-los_angeles = {'country': 'usa' , 'population': '3.9 million', 'fact': \
-            'the city once had the world\'s largest electrified rail system'}
+
+for city in cities.items():
+    print(f'{city[0].title()} is in (the) {city[1]["country"].title()}. It has'\
+         f' {city[1]["population"]} people, and {city[1]["fact"]}.')
 
 # 6-12. Extensions: We’re now working with examples that are complex enough
 # that they can be extended in any number of ways. Use one of the example
