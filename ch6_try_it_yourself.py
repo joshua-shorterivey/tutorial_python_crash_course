@@ -77,27 +77,60 @@ for river in major_rivers.values():
     
 # 6-6. Polling: Use the code in favorite_languages.py (page 97).
 print('\n---\n6-6\n---\n')
+favorite_languages = {
+       'jen': 'python',
+       'sarah': 'c',
+       'edward': 'ruby',
+       'phil': 'python',
+       }
 # • Make a list of people who should take the favorite languages poll. Include
 # some names that are already in the dictionary and some that are not.
-# • Loop through the list of people who should take the poll. If they have already taken the poll, print a message thanking them for responding. If they have not yet taken the poll, print a message inviting them to take the poll.
+should_take_poll = ['jen', 'phil', 'alan', 'tyrese', 'bol']
 
+# • Loop through the list of people who should take the poll. If they have
+# already taken the poll, print a message thanking them for responding. If they
+# have not yet taken the poll, print a message inviting them to take the poll.
+for person in should_take_poll:
+    if person in favorite_languages:
+        print(f'Thank you for responding to the poll, {person.title()}.')
+    else:
+        print(f'{person.title()}, we invite you to participate in the polling.')
 
 # 6-7. People: Start with the program you wrote for Exercise 6-1 (page 99).
 print('\n---\n6-7\n---\n')
-
+person = {'first_name': 'alan', 'last_name': 'turing', 'city': 'manchester', \
+        'age': 110}
 # Make two new dictionaries representing different people, and store all three
 # dictionaries in a list called people. Loop through your list of people. As
 # you loop through the list, print everything you know about each person.
+person_2 = {'first_name': 'bol', 'last_name': 'bol', 'city': 'orlando', \
+        'age': 22}
+person_3 = {'first_name': 'paolo', 'last_name': 'banchero', 'city': 'orlando', \
+        'age': 20}
+people = [person, person_2, person_3]
+for individual in people:
+    print('{} {} lives in {}, and is {} years old.'\
+        .format(individual ['first_name'].title(),
+                individual['last_name'].title(),
+                individual['city'].title(),
+                individual['age']))
 
 # 6-8. Pets: Make several dictionaries, where each dictionary represents a
-# differ- ent pet. 
+# different pet. 
 print('\n---\n6-8\n---\n')
-
 # • In each dictionary, include the kind of animal and the owner’s name. Store
 # these dictionaries in a list called pets. 
+pet_1 = {'name': 'spiral', 'kind': 'tiger', 'owner': 'queen'}
+pet_2 = {'name': 'chopper', 'kind': 'tanooki', 'owner': 'luffy'}
+pet_3 = {'name': 'lonzo', 'kind': 'giraffe', 'owner': 'cp9'}
+pets = [pet_1, pet_2, pet_3]
 # • Next, loop through your list and as you do, print everything you know about
 # each pet.
-
+for pet in pets:
+    print('{} owns a {} named {}.'\
+        .format(pet['owner'].title(),
+                pet['kind'],
+                pet['name'].title()))
 
 # 6-9. Favorite Places: Make a dictionary called favorite_places. Think of
 # three names to use as keys in the dictionary, and store one to three favorite
@@ -105,11 +138,30 @@ print('\n---\n6-8\n---\n')
 # some friends to name a few of their favorite places. Loop through the
 # dictionary, and print each person’s name and their favorite places.
 print('\n---\n6-9\n---\n')
+favorite_places = {
+                'nikola': ['denver', 'los angeles', 'serbia'],
+                'bol': ['orlando', 'boston', 'denver'],
+                'edward': ['miami', 'las vegas', 'seattle'],
+                'phil': ['orlando', 'memphis', 'houston']
+                }
+for person in favorite_places.items():
+    print('{}\'s favorite places are {}, {}, and {}.'\
+        .format(person[0].title(),
+                person[1][0].title(), 
+                person[1][1].title(),
+                person[1][2].title())
+)
 
 # 6-10. Favorite Numbers: Modify your program from Exercise 6-2 (page 99) so
 # each person can have more than one favorite number. Then print each
 # person’s name along with their favorite numbers.
 print('\n---\n6-10\n---\n')
+names_numbers = {'charles': [38,98], 'martina':[27,21], 'michael':[8,23],\
+               'florence':[19,43], 'eli':[6, 47]}
+
+for person in names_numbers.items():
+    print(f'{person[0].title()}\'s favorite numbers are {person[1][0]} and ' \
+        f'{person[1][1]}.')
 
 # 6-11. Cities: Make a dictionary called cities. Use the names of three cities
 # as keys in your dictionary. Create a dictionary of information about each
@@ -118,6 +170,13 @@ print('\n---\n6-10\n---\n')
 # something like country, population, and fact. Print the name of each city and
 # all of the infor- mation you have stored about it.
 print('\n---\n6-11\n---\n')
+
+barcelona = {'country': 'spain', 'population': '1.7 million', 'fact':\
+            'the city center is called the gothic quarter'}
+orlando = {'country': 'usa', 'population': '307,573', 'fact':\
+        'the city has  more than 100 lakes'}
+los_angeles = {'country': 'usa' , 'population': '3.9 million', 'fact': \
+            'the city once had the world\'s largest electrified rail system'}
 
 # 6-12. Extensions: We’re now working with examples that are complex enough
 # that they can be extended in any number of ways. Use one of the example
