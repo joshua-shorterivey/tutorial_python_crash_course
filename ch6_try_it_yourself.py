@@ -49,8 +49,8 @@ for word in glossary.items():
 print('\n---\n6-4\n---\n')
 glossary['class'] = 'a template for creating user-defined objects'
 glossary['CPython'] = 'the canonical implementation of Python in C'
-glossary['floor division'] = 'division that rounds the result down to the \
-                             nearest integer'
+glossary['floor division'] = 'division that rounds the result down to the '\
+                             'nearest integer'
 glossary['comments'] = 'lines of code that will not be executed'
 glossary['iterator'] = 'an object that contains a countable number of values'
 
