@@ -136,23 +136,42 @@ show_messages(list_of_messages)
 print('\n---\n8-10\n---\n')
 def send_messages(starting_list, ending_list):
     '''Moves messages from starting to ending list'''
-    for message in starting_list:
+    while starting_list:
+        message = starting_list.pop()
         print(message)
-        
+        ending_list.append(message)
+    
 list_of_messages = ['This is the first message',
                     'This is the second message',
-                    'Startling lack of creativity.']
+                    'A Startling lack of creativity.']
 
 sent_messages = []
 
-show_messages(list_of_messages)
+send_messages(list_of_messages, sent_messages)
+print(f'sent_messages = {sent_messages}')
+print(f'list_of_messages = {list_of_messages}')
 
 # 8-11. Archived Messages: Start with your work from Exercise 8-10. Call the
 # function send_messages() with a copy of the list of messages. After calling
 # the function, print both of your lists to show that the original list has
 # retained its messages.
 print('\n---\n8-11\n---\n')
+def send_messages_b(starting_list, ending_list):
+    '''Moves messages from starting to ending list'''
+    while starting_list:
+        message = starting_list.pop()
+        print(message)
+        ending_list.append(message)
+    
+list_of_messages = ['This is the first message',
+                    'This is the second message',
+                    'A Startling lack of creativity.']
 
+sent_messages = []
+
+send_messages_b(list_of_messages[:], sent_messages)
+print(f'sent_messages = {sent_messages}')
+print(f'list_of_messages = {list_of_messages}')
 
 # 8-12. Sandwiches: Write a function that accepts a list of items a person
 # wants on a sandwich. The function should have one parameter that collects as
@@ -160,11 +179,29 @@ print('\n---\n8-11\n---\n')
 # the sand- wich that’s being ordered. Call the function three times, using a
 # different num- ber of arguments each time.
 print('\n---\n8-12\n---\n')
+def sandwich_order(*fixings):
+    '''Prints fixings on a given sandwich'''
+    print(fixings)
+sandwich_order('avacado', 'tomato', 'mustard')
+sandwich_order('eggs', 'cheese', 'sausage', 'bacon')
+sandwich_order('pickles', 'avacado', 'sirloin', 'jelly', 'mustard')
 
 # 8-13. User Profile: Start with a copy of user_profile.py from page 149. Build
 # a profile of yourself by calling build_profile(), using your first and last
 # names and three other key-value pairs that describe you.
 print('\n---\n8-13\n---\n')
+def build_profile(first, last, **user_info):
+    """Build a dictionary containing everything we know about a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+
+user_profile = build_profile('shorter', 'shorter',
+                            location = 'texas',
+                            field = 'data_engineering',
+                            age = 'old')
+
+print(user_profile)
 
 # 8-14. Cars: Write a function that stores information about a car in a
 # diction- ary. The function should always receive a manufacturer and a model
@@ -177,6 +214,14 @@ print('\n---\n8-13\n---\n')
 # Print the dictionary that’s returned to make sure all the information was
 # stored correctly.
 print('\n---\n8-14\n---\n')
+def make_car(manufacturer, model, **vehicle):
+    """Defines information about a car"""
+    vehicle['manufacturer'] = manufacturer
+    vehicle['model'] = model
+    return vehicle
+
+car = make_car('kia', 'soul', color='red', drivetrain='electric', year='2019')
+print(car)
 
 # 8-15. Printing Models: Put the functions for the example printing_models.py
 # in a separate file called printing_functions.py. Write an import statement at
@@ -188,13 +233,25 @@ print('\n---\n8-15\n---\n')
 # that function in a separate file. Import the function into your main program
 # file, and call the function using each of these approaches:
 # import module_name
-# from module_name import function_name
-# from module_name import function_name as fn
-# import module_name as mn
-# from module_name import *
 print('\n---\n8-16\n---\n')
+import ch8_pizza
+ch8_pizza.make_pizza(15, 'jalapeno', 'tomato')
+# from module_name import function_name
+from ch8_pizza import make_pizza
+make_pizza('15', 'jalapeno', 'tomato')
+# from module_name import function_name as fn
+from ch8_pizza import make_pizza as mp
+mp('15', 'jalapeno', 'tomato')
+# import module_name as mn
+import ch8_pizza as pizza
+pizza.make_pizza('15', 'jalapeno', 'tomato')
+# from module_name import *
+from ch8_pizza import *
+make_pizza('15', 'jalapeno', 'tomato')
+
 
 # 8-17. Styling Functions: Choose any three programs you wrote for this
 # chapter, and make sure they follow the styling guidelines described in this
 # section.
 print('\n---\n8-17\n---\n')
+print('Complete')
