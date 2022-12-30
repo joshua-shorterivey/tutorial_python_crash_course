@@ -396,8 +396,8 @@ from random import choice
 lottery_numbers = []
 for i in range(1,11):
     lottery_numbers.append(randint(1,100))
-for i in range(1,5):
-    lottery_numbers.append(choice(list('abcdefghijklmnopqrstuv')))
+for i in range(1,6):
+    lottery_numbers.append(choice(list('abcdefghijklmnopqrstuvwxyz')))
 print(lottery_numbers)
 
 winning_numbers = []
@@ -411,10 +411,22 @@ print(winning_numbers)
 # message reporting how many times the loop had to run to give you a winning 
 # ticket.
 print('\n---\n9-15\n---\n')
+my_ticket = [18,36,24,45]
+count = 0
+while my_ticket != winning_numbers:
+    winning_numbers = []
+    for i in range(1,5):
+        winning_numbers.append(choice(lottery_numbers))
+    print(count)
+    count +=1
+    if sorted(str(my_ticket)) ==  sorted(str(winning_numbers)):
+        break
 
+print(count)
 # 9-16. Python Module of the Week: One excellent resource for exploring the 
 # Python standard library is a site called Python Module of the Week. Go to 
 # https://pymotw.com/ and look at the table of contents. Find a module that 
 # looks interesting to you and read about it, perhaps starting with the random 
 # module.
 print('\n---\n9-16\n---\n')
+print('completed')
