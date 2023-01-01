@@ -204,3 +204,86 @@ for filename in filenames:
     else:
         count  = content.lower().count('the')
         print(f"{filename} features the word 'the' {count} times.")
+
+# 10-11. Favorite Number: Write a program that prompts for the user’s favorite
+# number. Use json.dump() to store this number in a file. Write a separate
+# program that reads in this value and prints the message, “I know your
+# favorite number! It’s _____.”
+print('\n---\n10-11\n---')
+import json
+
+filename = 'favorite_number.json'
+
+favorite_number = input("What is your favorite number? ")
+
+with open(filename, 'w') as f:
+    json.dump(favorite_number, f)
+
+with open(filename) as f:
+    contents = f.read()
+
+print(f"I know your favorite number! It's {contents}")
+
+# 10-12. Favorite Number Remembered: Combine the two programs from Exercise
+# 10-11 into one file. If the number is already stored, report the favorite
+# number to the user. If not, prompt for the user’s favorite number and store
+# it in a file. Run the program twice to see that it works.
+print('\n---\n10-12\n---')
+
+import json
+
+filename = 'favorite_number.json'
+
+try:
+    with open(filename) as f:
+        contents = f.read()
+    print(f"Your favorite number is {contents}")
+except FileNotFoundError:
+    favorite_number = input()
+    with open(filename, 'w') as f:
+        print("We will save that number for you.")
+        json.dump(favorite_number, f)
+
+# 10-13. Verify User: The final listing for remember_me.py assumes either that
+# the user has already entered their username or that the program is running
+# for the first time. We should modify it in case the current user is not the
+# person who last used the program.
+# Before printing a welcome back message in greet_user(), ask the user if this
+# is the correct username. If it’s not, call get_new_username() to get the
+# correct username.
+print('\n---\n10-13\n---')
+import json
+
+def get_stored_username():
+    """get stored username if available"""
+    filename = 'username.json'
+    try: 
+        with open(filename) as f:
+            username = json.load(f)
+    except FileNotFoundError:
+        return None
+    else:
+        return username
+
+def get_new_username():
+    """prompt for a new username."""
+    username = input ("What is your username? ")
+    filename = 'username.json'
+    with open(filename, 'w') as f:
+        json.dump(username, f)
+    return username
+
+def greet_user():
+    """Greet the user by name."""
+    username = get_stored_username()
+    username_flag = 'n'
+    if username:
+        username_flag = input(f"Is '{username}' the correct username? (y/n) ")
+            
+    if username_flag == 'y':
+            print(f"Welcome back, {username}!")
+    elif (username_flag == 'n') | (username == None) :
+            username = get_new_username()
+            print(f"We'll remember you when you come back, {username}!")
+
+greet_user()
